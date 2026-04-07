@@ -1,0 +1,214 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: hsl(210, 46%, 95%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+main {
+  background-color: white;
+  max-width: 730px;
+  width: 100%;
+  display: flex;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+}
+
+.left-side img {
+  width: 280px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+.right-side {
+  padding: 32px 40px 32px 40px;
+  flex: 1;
+}
+
+.top p {
+  font-size: 20px;
+  font-weight: 700;
+  color: hsl(217, 19%, 35%);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.mid p {
+  font-size: 13px;
+  color: hsl(214, 17%, 51%);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.personal-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.personal-details img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 700;
+  color: hsl(217, 19%, 35%);
+  font-size: 13px;
+}
+
+.date {
+  font-size: 13px;
+  color: hsl(212, 23%, 69%);
+}
+
+.share-image {
+  background-color: hsl(210, 46%, 95%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 5;
+  position: relative;
+}
+
+.share-image:hover {
+  background-color: hsl(212, 23%, 69%);
+}
+
+.share-image img {
+  width: 15px;
+  height: 15px;
+}
+
+/* ========== SHARE POPUP - DESKTOP VERSION (default) ========== */
+.share {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  right: -40px;
+  background-color: hsl(217, 19%, 35%);
+  border-radius: 12px;
+  padding: 12px 32px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Triangle pointer for desktop */
+.share::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 85px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: hsl(217, 19%, 35%) transparent transparent transparent;
+}
+
+.share.show {
+  display: block;
+}
+
+.share-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.share-box p {
+  color: hsl(212, 23%, 69%);
+  letter-spacing: 5px;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.share-box img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+/* ========== MOBILE RESPONSIVE (≤ 768px) ========== */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    max-width: 327px;
+  }
+
+  .left-side img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+  }
+
+  .right-side {
+    padding: 32px 28px 20px 28px;
+  }
+
+  .top p {
+    font-size: 16px;
+  }
+  .share {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: hsl(217, 19%, 35%);
+    border-radius: 0 0 10px 10px;
+    padding: 16px 28px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: none;
+    /* Remove triangle on mobile */
+    &::after {
+      display: none;
+    }
+  }
+
+  .share.show {
+    display: flex;
+  }
+
+  .share-box {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .share-box p {
+    letter-spacing: 4px;
+    font-size: 12px;
+  }
+
+  .share.show ~ .bottom .personal-details,
+  .share.show + .bottom .personal-details {
+    display: none;
+  }
+}
