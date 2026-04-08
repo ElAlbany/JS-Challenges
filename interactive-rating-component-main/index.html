@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Rating state start -->
+
+    <div class="rate-page">
+      <div class="star-image">
+        <img src="images/icon-star.svg" alt="" />
+      </div>
+      <div class="question">
+        <p>How did we do?</p>
+      </div>
+      <div class="statment">
+        <p>
+          Please let us know how we did with your support request. All feedback
+          is appreciated to help us improve our offering!
+        </p>
+      </div>
+
+      <div class="list">
+        <ul class="numbers-list">
+          <li><button class="rating-btn" value="1">1</button></li>
+          <li><button class="rating-btn" value="2">2</button></li>
+          <li><button class="rating-btn" value="3">3</button></li>
+          <li><button class="rating-btn" value="4">4</button></li>
+          <li><button class="rating-btn" value="5">5</button></li>
+        </ul>
+      </div>
+
+      <button class="btn-submit" type="submit">submit</button>
+    </div>
+
+    <div class="after-submit-page">
+      <div class="image">
+        <img src="images/illustration-thank-you.svg" alt="" />
+
+        <div class="display-rate">
+          <p>You selected <span id="rate-number"></span> out of 5</p>
+        </div>
+
+        <div class="thanks">
+          <p>Thank you!</p>
+        </div>
+
+        <div class="bottom">
+          <p>
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </footer> -->
+  </body>
+</html>
