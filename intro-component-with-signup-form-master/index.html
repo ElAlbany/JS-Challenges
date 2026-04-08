@@ -3,80 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-
     <title>Frontend Mentor | Intro component with sign up form</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 0.6875rem;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
   </head>
   <body>
-    <div class="left">
-      <p>Learn to code by watching others</p>
-      <p>
-        See how experienced developers solve problems in real-time. Watching
-        scripted tutorials is great, but understanding how developers think is
-        invaluable.
-      </p>
-    </div>
-
-    <div class="right">
-      <div class="top">
-        <p><b>Try it free 7 days</b> then $20/mo. thereafter</p>
+    <div class="container">
+      <div class="left">
+        <h1>Learn to code by watching others</h1>
+        <p>
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
       </div>
 
-      <form>
-        <div class="field">
-          <input type="text" class="input" placeholder="First Name" />
-          <p id="first-name-error" class="error"></p>
+      <div class="right">
+        <div class="top">
+          <p><strong>Try it free 7 days</strong> then $20/mo. thereafter</p>
         </div>
 
-        <div class="field">
-          <input type="text" class="input" placeholder="Last Name" />
-          <p id="first-name-error" class="error"></p>
-        </div>
+        <form id="signup-form" novalidate>
+          <div class="field">
+            <input
+              type="text"
+              id="first-name"
+              class="input"
+              placeholder="First Name"
+              autocomplete="given-name"
+            />
+            <span class="error-icon"></span>
+            <p class="error-message" id="first-name-error"></p>
+          </div>
 
-        <div class="field">
-          <input type="text" class="input" placeholder="Email Address" />
-          <p id="first-name-error" class="error"></p>
-        </div>
+          <div class="field">
+            <input
+              type="text"
+              id="last-name"
+              class="input"
+              placeholder="Last Name"
+              autocomplete="family-name"
+            />
+            <span class="error-icon"></span>
+            <p class="error-message" id="last-name-error"></p>
+          </div>
 
-        <div class="field">
-          <input type="text" class="input" placeholder="Password" />
-          <p id="first-name-error" class="error"></p>
-        </div>
+          <div class="field">
+            <input
+              type="email"
+              id="email"
+              class="input"
+              placeholder="Email Address"
+              autocomplete="email"
+            />
+            <span class="error-icon"></span>
+            <p class="error-message" id="email-error"></p>
+          </div>
 
-        <div class="field submit">
-          <button type="submit">Claim your free trial</button>
-        </div>
+          <div class="field">
+            <input
+              type="password"
+              id="password"
+              class="input"
+              placeholder="Password"
+              autocomplete="new-password"
+            />
+            <span class="error-icon"></span>
+            <p class="error-message" id="password-error"></p>
+          </div>
 
-        <div class="bottom">
-          <p>
-            By clicking the button, you are agreeing to our
-            <span class="Terms-and-Services">Terms and Services</span>
-          </p>
-        </div>
-      </form>
+          <div class="submit">
+            <button type="submit">Claim your free trial</button>
+          </div>
+
+          <div class="success-message" id="success-message"></div>
+
+          <div class="bottom">
+            <p>
+              By clicking the button, you are agreeing to our
+              <span class="terms">Terms and Services</span>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <!-- <footer class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </footer> -->
+    <script src="script.js"></script>
   </body>
 </html>
