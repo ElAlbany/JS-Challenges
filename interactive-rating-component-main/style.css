@@ -69,7 +69,6 @@ body {
   background-color: hsl(213, 19%, 22%);
   border: none;
   color: white;
-  font-family: "Overpass", sans-serif;
   font-weight: 700;
   font-size: 1rem;
   width: 50px;
@@ -101,7 +100,6 @@ body {
   background-color: hsl(25, 97%, 53%);
   border: none;
   color: hsl(216, 12%, 8%);
-  font-family: "Overpass", sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 1.5px;
@@ -180,5 +178,8 @@ body {
   }
   .question p {
     font-size: 1.5rem;
+  }
+  .numbers-list {
+    flex-wrap: wrap;
   }
 }
