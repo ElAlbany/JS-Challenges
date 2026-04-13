@@ -1,0 +1,119 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  padding: 60px;
+  background-color: hsl(218, 28%, 13%);
+  min-height: 100vh;
+}
+
+/* header  */
+.header {
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.header-image {
+  width: 130px;
+}
+.header-image img {
+  width: 100%;
+}
+.header-list {
+  list-style: none;
+}
+.header-list-member {
+  color: white;
+  opacity: 0.6;
+  display: inline-block;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+.header-list-member:hover {
+  text-decoration: underline;
+  opacity: 1;
+  font-weight: bold;
+  cursor: pointer;
+}
+.top-middle-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.top-middle-container img {
+  width: 500px;
+  object-fit: contain;
+}
+
+.top-middle-container-bold-text {
+  padding: 20px 0px;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+.top-middle-container-bottom-text {
+  padding: 10px 35px;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.8;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.top-middle-container-button {
+  background: linear-gradient(to right, hsl(176, 68%, 64%), hsl(198, 60%, 50%));
+  color: white;
+  border: none;
+  width: 40%;
+  padding: 15px;
+  border-radius: 20px;
+}
+.top-middle-container-button:hover {
+  background: hsl(176, 68%, 64%);
+  cursor: pointer;
+}
+
+.middle-container {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.middle-sub-container {
+  width: 50%;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.middle-container-bold-text {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.middle-container-bottom-text {
+  opacity: 0.8;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.8;
+}
