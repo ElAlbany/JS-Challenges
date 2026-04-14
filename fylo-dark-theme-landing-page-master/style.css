@@ -25,7 +25,7 @@ body {
   background-size: 100% auto; */
 }
 
-/* body::before {
+body::before {
   content: "";
   position: absolute;
   top: 500px;
@@ -37,7 +37,7 @@ body {
   filter: brightness(0.8);
   pointer-events: none;
   z-index: -1;
-} */
+}
 
 h1,
 h2,
@@ -328,7 +328,7 @@ h4,
 
 .footer {
   background-color: hsl(216, 53%, 9%);
-  padding: 200px 60px 60px;
+  padding: 200px 60px 60px 120px;
   margin-top: 30px;
 }
 .footer-logo {
@@ -340,16 +340,30 @@ h4,
 .footer-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
-  justify-content: space-between;
+}
+.footer-location {
+  margin-right: 60px;
+  display: flex;
+  max-width: 300px;
+  gap: 15px;
+  align-items: start;
+}
+.footer-location p {
+  font-size: 12px;
+}
+.footer-location img {
+  padding-top: 5px;
+  width: 18px;
+  height: auto;
+  object-fit: contain;
 }
 .footer-contact {
-  flex: 2;
-  min-width: 250px;
+  margin-right: 120px;
+  flex: 1;
 }
 .footer-contact div {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
   align-items: flex-start;
 }
@@ -385,6 +399,7 @@ h4,
   gap: 20px;
 }
 .social-icon {
+  padding: 25px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -392,9 +407,7 @@ h4,
   height: 32px;
   border: 1px solid white;
   border-radius: 50%;
-  cursor: pointer;
-  font-size: 12px;
-  text-transform: uppercase;
+  filter: brightness(0) invert(1);
   transition:
     border-color 0.2s,
     color 0.2s;
@@ -402,13 +415,13 @@ h4,
 .social-icon:hover {
   border-color: hsl(176, 68%, 64%);
   color: hsl(176, 68%, 64%);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  /* body {
-    background-image: url("images/bg-curvy-mobile.svg");
-    background-position: top 150px center;
-  } */
+  body::before {
+    top: 350px;
+  }
   .header {
     padding: 30px 20px;
   }
@@ -467,6 +480,9 @@ h4,
 }
 
 @media (max-width: 480px) {
+  body::before {
+    top: 200px;
+  }
   .psuedo-image::before {
     top: -15px;
     left: -5px;
