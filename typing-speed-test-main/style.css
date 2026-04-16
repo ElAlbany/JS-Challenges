@@ -1,0 +1,134 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+body {
+  padding: 20px 15px;
+  font-size: 16px;
+  background-color: hsl(0, 0%, 7%);
+  font-family: "Sora", sans-serif;
+  font-weight: 400;
+}
+
+.header {
+  margin-bottom: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.display-best-score {
+  display: flex;
+  gap: 10px;
+}
+.personal-best {
+  opacity: 0.7;
+}
+#personal-word {
+  display: none;
+}
+.results {
+  padding-right: 20px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-section:nth-child(2) {
+  border-right: 1px solid hsla(240, 1%, 59%, 0.5);
+  border-left: 1px solid hsla(240, 1%, 59%, 0.5);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.display-word {
+  color: white;
+  opacity: 0.7;
+}
+#wpn-number {
+  color: white;
+}
+#accuracy {
+  color: hsl(354, 63%, 57%);
+}
+#time {
+  color: hsl(49, 85%, 70%);
+}
+#accuracy,
+#time,
+#wpn-number {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 1.5rem;
+}
+
+.input-container {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  color: hsl(0, 0%, 100%);
+}
+.custom-combo {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+.difficulty {
+  padding: 5px 0px;
+  margin-bottom: 8px;
+  border: 1px solid hsl(0, 0%, 100%);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.difficulty-value {
+  margin-right: 5px;
+}
+.custom-combo:has(.dropdown-menu.open) .difficulty img {
+  transform: translateY(-50%) rotate(180deg);
+  transition: all 0.2 ease;
+}
+
+.dropdown-menu {
+  width: 100%;
+  background-color: hsl(0, 0%, 15%);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: absolute;
+  display: none;
+}
+.option {
+  padding: 15px 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+#combo1 .option:nth-child(2) {
+  border-top: 1px solid hsla(240, 1%, 59%, 0.3);
+  border-bottom: 1px solid hsla(240, 1%, 59%, 0.3);
+}
+
+#combo2 .option:nth-child(2) {
+  border-bottom: none;
+}
+
+.radio-style {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: inline-block;
+}
+.option.selected .radio-style {
+  border: none;
+  background-color: black;
+  box-shadow: inset 0 0 0 6px hsl(210, 100%, 65%);
+}
+.dropdown-menu.open {
+  display: block;
+  z-index: 10;
+}

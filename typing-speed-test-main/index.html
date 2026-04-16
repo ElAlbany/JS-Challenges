@@ -1,57 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Typing Speed Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  Personal best: <!-- PB --> WPM
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
 
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Time: <!-- Time -->
+    <title>Frontend Mentor | Typing Speed Test</title>
 
-  Difficulty:
-  Easy
-  Medium
-  Hard
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="assets/images/logo-small.svg" alt="logo-small.svg" />
+      <section class="display-best-score">
+        <img src="assets/images/icon-personal-best.svg" alt="" />
+        <div>
+          <p>
+            <span class="personal-best"
+              ><span id="personal-word">Personal</span> best:</span
+            >
+            <span id="best-score-number">92</span> WPM
+          </p>
+        </div>
+      </section>
+    </div>
 
-  Mode:
-  Timed (60s)
-  Passage
+    <div class="results">
+      <section class="result-section">
+        <p class="display-word">WPM:</p>
+        <p id="wpn-number">40</p>
+      </section>
+      <section class="result-section">
+        <p class="display-word">Accuracy:</p>
+        <p id="accuracy">94%</p>
+      </section>
+      <section class="result-section">
+        <p class="display-word">Time:</p>
+        <p id="time">0:46</p>
+      </section>
+    </div>
 
-  <!-- Passage -->
+    <div class="input-container">
+      <!-- selecting difficulty level combo -->
+      <div class="custom-combo" id="combo1">
+        <div class="difficulty" id="difficulty1">
+          <span class="difficulty-value" id="value1">Easy</span>
+          <img src="assets/images/icon-down-arrow.svg" alt="" />
+        </div>
 
-  Start Typing Test
-  Or click the text and start typing
+        <div class="dropdown-menu">
+          <div class="option selected">
+            <span class="radio-style"></span>
+            <span class="option-value">Easy</span>
+          </div>
 
-  <!-- Test Complete Start -->
+          <div class="option">
+            <span class="radio-style"></span>
+            <span class="option-value">Medium</span>
+          </div>
 
-  Test Complete!
-  Solid run. Keep pushing to beat your high score.
+          <div class="option">
+            <span class="radio-style"></span>
+            <span class="option-value">Hard</span>
+          </div>
+        </div>
+      </div>
 
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Characters: <!-- Correct/Incorrect -->
+      <!-- selecting mode combo -->
 
-  Go Again
-  
-  <!-- Test Complete End -->
+      <div class="custom-combo" id="combo2">
+        <div class="difficulty" id="difficulty2">
+          <span class="difficulty-value" id="value2">Timed (60s)</span>
+          <img src="assets/images/icon-down-arrow.svg" alt="" />
+        </div>
 
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
-</body>
+        <div class="dropdown-menu">
+          <div class="option selected">
+            <span class="radio-style"></span>
+            <span class="option-value">Timed (60s)</span>
+          </div>
+
+          <div class="option">
+            <span class="radio-style"></span>
+            <span class="option-value">Passage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Passage -->
+
+    <!-- Start Typing Test
+  Or click the text and start typing -->
+
+    <!-- Test Complete Start -->
+
+    <!-- Test Complete!
+  Solid run. Keep pushing to beat your high score. -->
+
+    <!-- WPM: WPM -->
+    <!-- Accuracy: Accuracy -->
+    <!-- Characters: Correct/Incorrect -->
+
+    <!-- Go Again -->
+
+    <!-- Test Complete End -->
+
+    <script src="script.js"></script>
+  </body>
 </html>
