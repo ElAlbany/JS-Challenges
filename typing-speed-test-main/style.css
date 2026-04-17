@@ -46,25 +46,26 @@ body {
   color: white;
   opacity: 0.7;
 }
-#wpn-number {
-  color: white;
-}
-#accuracy {
+#accuracy.colored {
   color: hsl(354, 63%, 57%);
 }
-#time {
+#time.colored {
   color: hsl(49, 85%, 70%);
 }
 #accuracy,
 #time,
 #wpn-number {
+  color: white;
   text-align: center;
   margin-top: 5px;
   font-size: 1.5rem;
 }
 
+/* start */
+/* combo box groups  */
 .input-container {
   margin-top: 30px;
+  margin-bottom: 10px;
   width: 100%;
   display: flex;
   gap: 15px;
@@ -131,4 +132,67 @@ body {
 .dropdown-menu.open {
   display: block;
   z-index: 10;
+}
+/* end */
+
+/* start */
+/* text container  */
+
+.text-container {
+  padding: 20px 0px;
+  color: white;
+  line-height: 1.7;
+  border-top: 1px solid hsla(240, 1%, 59%, 0.5);
+  border-bottom: 1px solid hsla(240, 1%, 59%, 0.5);
+  position: relative;
+}
+
+.text {
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+.text.filter {
+  filter: blur(8px);
+}
+.start-test {
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.start-btn {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  width: fit-content;
+  background-color: hsl(214, 100%, 55%);
+  border-radius: 15px;
+  cursor: pointer;
+}
+.start-test.hide {
+  display: none;
+}
+.start-btn:hover {
+  background-color: hsl(210, 100%, 65%);
+}
+
+.restart {
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: linear-gradient(to right, hsl(0, 0%, 13%), hsl(0, 0%, 15%));
+  border-radius: 10px;
+  cursor: pointer;
+}
+.restart.hide {
+  display: none;
 }
