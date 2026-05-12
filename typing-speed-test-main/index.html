@@ -3,144 +3,273 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-
+    <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Typing Speed Test</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 0.6875rem;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <script
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+      defer
+    ></script>
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <div class="header">
-      <img src="assets/images/logo-small.svg" alt="logo-small.svg" />
-      <section class="display-best-score">
-        <img src="assets/images/icon-personal-best.svg" alt="" />
-        <div>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand" aria-label="Typing Speed Test">
+          <img
+            class="brand-icon"
+            src="./assets/images/logo-small.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="brand-copy">
+            <h1>Typing Speed Test</h1>
+            <p>Type as fast as you can in 60 seconds</p>
+          </div>
+        </div>
+
+        <section class="best-score hidden" aria-live="polite">
+          <img src="./assets/images/icon-personal-best.svg" alt="" />
           <p>
-            <span class="personal-best"
-              ><span id="personal-word">Personal</span> best:</span
-            >
-            <span id="best-score-number"></span> WPM
+            <span class="best-label best-label-mobile">Best:</span>
+            <span class="best-label best-label-desktop">Personal best:</span>
+            <strong id="best-score-number">0</strong> WPM
           </p>
+        </section>
+      </header>
+
+      <section class="stats-bar" aria-label="Typing test status and controls">
+        <div class="stats-row">
+          <article class="stat-item">
+            <span class="stat-label">WPM:</span>
+            <strong id="wpm-number">0</strong>
+          </article>
+          <article class="stat-item">
+            <span class="stat-label">Accuracy:</span>
+            <strong id="accuracy-number">100%</strong>
+          </article>
+          <article class="stat-item">
+            <span class="stat-label">Time:</span>
+            <strong id="time-number">0:60</strong>
+          </article>
+        </div>
+
+        <div class="desktop-controls" aria-label="Typing test controls">
+          <div class="control-cluster">
+            <span class="control-label">Difficulty:</span>
+            <div class="pill-group" role="group" aria-label="Difficulty">
+              <button class="control-pill" type="button" data-difficulty="easy">
+                Easy
+              </button>
+              <button
+                class="control-pill"
+                type="button"
+                data-difficulty="medium"
+              >
+                Medium
+              </button>
+              <button class="control-pill" type="button" data-difficulty="hard">
+                Hard
+              </button>
+            </div>
+          </div>
+
+          <div class="control-cluster mode-cluster">
+            <span class="control-label">Mode:</span>
+            <div class="pill-group" role="group" aria-label="Mode">
+              <button class="control-pill" type="button" data-mode="timed">
+                Timed (60s)
+              </button>
+              <button class="control-pill" type="button" data-mode="passage">
+                Passage
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-controls" aria-label="Typing test controls">
+          <div class="dropdown-control" data-dropdown="difficulty">
+            <button
+              class="dropdown-trigger"
+              id="difficulty-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="difficulty-menu"
+            >
+              <span id="difficulty-value">Hard</span>
+              <img src="./assets/images/icon-down-arrow.svg" alt="" />
+            </button>
+            <div class="dropdown-menu" id="difficulty-menu" role="menu">
+              <button
+                class="dropdown-option"
+                type="button"
+                role="menuitemradio"
+                aria-checked="false"
+                data-difficulty="easy"
+              >
+                <span class="radio-dot" aria-hidden="true"></span>
+                Easy
+              </button>
+              <button
+                class="dropdown-option"
+                type="button"
+                role="menuitemradio"
+                aria-checked="false"
+                data-difficulty="medium"
+              >
+                <span class="radio-dot" aria-hidden="true"></span>
+                Medium
+              </button>
+              <button
+                class="dropdown-option"
+                type="button"
+                role="menuitemradio"
+                aria-checked="true"
+                data-difficulty="hard"
+              >
+                <span class="radio-dot" aria-hidden="true"></span>
+                Hard
+              </button>
+            </div>
+          </div>
+
+          <div class="dropdown-control" data-dropdown="mode">
+            <button
+              class="dropdown-trigger"
+              id="mode-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mode-menu"
+            >
+              <span id="mode-value">Timed (60s)</span>
+              <img src="./assets/images/icon-down-arrow.svg" alt="" />
+            </button>
+            <div class="dropdown-menu" id="mode-menu" role="menu">
+              <button
+                class="dropdown-option"
+                type="button"
+                role="menuitemradio"
+                aria-checked="true"
+                data-mode="timed"
+              >
+                <span class="radio-dot" aria-hidden="true"></span>
+                Timed (60s)
+              </button>
+              <button
+                class="dropdown-option"
+                type="button"
+                role="menuitemradio"
+                aria-checked="false"
+                data-mode="passage"
+              >
+                <span class="radio-dot" aria-hidden="true"></span>
+                Passage
+              </button>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
 
-    <div class="results">
-      <section class="result-section">
-        <p class="display-word">WPM:</p>
-        <p id="wpn-number">0</p>
+      <main class="typing-screen" id="typing-screen">
+        <section class="passage-shell" aria-label="Typing passage">
+          <div
+            class="text-container blurred"
+            id="text-container"
+            tabindex="0"
+          ></div>
+          <div class="start-overlay" id="start-overlay">
+            <button class="start-btn" id="start-button" type="button">
+              Start Typing Test
+            </button>
+            <p>Or click the text and start typing</p>
+          </div>
+        </section>
+
+        <div class="restart-area hidden" id="restart-area">
+          <button class="restart-btn" id="restart-button" type="button">
+            <span>Restart Test</span>
+            <img src="./assets/images/icon-restart.svg" alt="" />
+          </button>
+        </div>
+      </main>
+
+      <section
+        class="results-screen hidden"
+        id="results-screen"
+        aria-live="polite"
+        aria-labelledby="result-heading"
+      >
+        <img
+          class="result-decor decor-left"
+          src="./assets/images/pattern-star-2.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="result-decor decor-right"
+          src="./assets/images/pattern-star-1.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="confetti-pattern"
+          src="./assets/images/pattern-confetti.svg"
+          alt=""
+          aria-hidden="true"
+        />
+
+        <div class="result-content">
+          <img
+            class="result-icon"
+            id="result-icon"
+            src="./assets/images/icon-completed.svg"
+            alt=""
+          />
+          <h2 id="result-heading">Test Complete!</h2>
+          <p id="result-subtitle">
+            Solid run. Keep pushing to beat your high score.
+          </p>
+
+          <div class="result-cards" aria-label="Test results">
+            <article class="result-card">
+              <span>WPM:</span>
+              <strong id="result-wpm">0</strong>
+            </article>
+            <article class="result-card">
+              <span>Accuracy:</span>
+              <strong id="result-accuracy">100%</strong>
+            </article>
+            <article class="result-card">
+              <span>Characters</span>
+              <strong class="characters-score">
+                <span id="result-correct">0</span><span>/</span
+                ><span id="result-errors">0</span>
+              </strong>
+            </article>
+          </div>
+
+          <button class="result-action" id="result-action" type="button">
+            <span id="result-action-text">Go Again</span>
+            <img src="./assets/images/icon-restart.svg" alt="" />
+          </button>
+        </div>
       </section>
-      <section class="result-section">
-        <p class="display-word">Accuracy:</p>
-        <p id="accuracy">100%</p>
-      </section>
-      <section class="result-section">
-        <p class="display-word">Time:</p>
-        <p id="time">0:60</p>
-      </section>
+
+      <textarea
+        class="typing-input"
+        id="typing-input"
+        aria-label="Typing input"
+        autocomplete="off"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+        tabindex="-1"
+      ></textarea>
     </div>
-
-    <div class="input-container">
-      <!-- selecting difficulty level combo -->
-      <div class="custom-combo" id="combo1">
-        <div class="difficulty" id="difficulty1">
-          <span class="difficulty-value" id="value1">Easy</span>
-          <img src="assets/images/icon-down-arrow.svg" alt="" />
-        </div>
-
-        <div class="dropdown-menu">
-          <div class="option selected">
-            <span class="radio-style"></span>
-            <span class="option-value">Easy</span>
-          </div>
-
-          <div class="option">
-            <span class="radio-style"></span>
-            <span class="option-value">Medium</span>
-          </div>
-
-          <div class="option">
-            <span class="radio-style"></span>
-            <span class="option-value">Hard</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- selecting mode combo -->
-
-      <div class="custom-combo" id="combo2">
-        <div class="difficulty" id="difficulty2">
-          <span class="difficulty-value" id="value2">Timed (60s)</span>
-          <img src="assets/images/icon-down-arrow.svg" alt="" />
-        </div>
-
-        <div class="dropdown-menu">
-          <div class="option selected">
-            <span class="radio-style"></span>
-            <span class="option-value">Timed (60s)</span>
-          </div>
-
-          <div class="option">
-            <span class="radio-style"></span>
-            <span class="option-value">Passage</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-container">
-      <div class="text filter">
-        <p></p>
-      </div>
-      <div class="start-test">
-        <div class="start-btn">
-          <p>Start Typing Test</p>
-        </div>
-        <div class="start-bottom">
-          <p>Or click the text and start typing</p>
-        </div>
-      </div>
-    </div>
-    <div class="restart hide">
-      <p>Restart Test</p>
-      <img src="assets/images/icon-restart.svg" alt="" />
-    </div>
-
-    <!-- Test Complete!
-  Solid run. Keep pushing to beat your high score. -->
-
-    <!-- WPM: WPM -->
-    <!-- Accuracy: Accuracy -->
-    <!-- Characters: Correct/Incorrect -->
-
-    <!-- Go Again -->
-
-    <!-- Test Complete End -->
-
-    <script src="script.js"></script>
   </body>
 </html>
