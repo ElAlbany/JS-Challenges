@@ -20,17 +20,20 @@
   <body>
     <div class="app-shell">
       <header class="app-header">
-        <div class="brand" aria-label="Typing Speed Test">
-          <img
-            class="brand-icon"
-            src="./assets/images/logo-small.svg"
-            alt=""
-            aria-hidden="true"
-          />
-          <div class="brand-copy">
-            <h1>Typing Speed Test</h1>
-            <p>Type as fast as you can in 60 seconds</p>
-          </div>
+        <div class="brand">
+          <picture>
+            <!-- Desktop: show large logo -->
+            <source
+              srcset="./assets/images/logo-large.svg"
+              media="(min-width: 48rem)"
+            />
+            <!-- Fallback for everything else (mobile & small screens) -->
+            <img
+              class="brand-icon"
+              src="./assets/images/logo-small.svg"
+              alt="Typing Speed Test"
+            />
+          </picture>
         </div>
 
         <section class="best-score hidden" aria-live="polite">
