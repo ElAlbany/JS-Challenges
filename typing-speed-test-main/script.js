@@ -71,15 +71,23 @@ function cacheDomElements() {
   elements.difficultyButtons = [
     ...document.querySelectorAll("[data-difficulty].control-pill"),
   ];
-  elements.modeButtons = [...document.querySelectorAll("[data-mode].control-pill")];
-  elements.dropdownControls = [...document.querySelectorAll(".dropdown-control")];
-  elements.dropdownTriggers = [...document.querySelectorAll(".dropdown-trigger")];
+  elements.modeButtons = [
+    ...document.querySelectorAll("[data-mode].control-pill"),
+  ];
+  elements.dropdownControls = [
+    ...document.querySelectorAll(".dropdown-control"),
+  ];
+  elements.dropdownTriggers = [
+    ...document.querySelectorAll(".dropdown-trigger"),
+  ];
   elements.difficultyValue = document.querySelector("#difficulty-value");
   elements.modeValue = document.querySelector("#mode-value");
   elements.difficultyOptions = [
     ...document.querySelectorAll(".dropdown-option[data-difficulty]"),
   ];
-  elements.modeOptions = [...document.querySelectorAll(".dropdown-option[data-mode]")];
+  elements.modeOptions = [
+    ...document.querySelectorAll(".dropdown-option[data-mode]"),
+  ];
 }
 
 function bindEvents() {
@@ -222,7 +230,11 @@ function renderPassage(text) {
 }
 
 function startTest() {
-  if (state.isStarted || state.isFinished || state.referenceChars.length === 0) {
+  if (
+    state.isStarted ||
+    state.isFinished ||
+    state.referenceChars.length === 0
+  ) {
     return;
   }
 
@@ -356,7 +368,7 @@ function updateStats() {
   elements.accuracyNumber.textContent = `${accuracy}%`;
   elements.timeNumber.textContent = formatTime(
     state.timerSeconds,
-    state.currentMode === "timed"
+    state.currentMode === "timed",
   );
 
   elements.accuracyNumber.classList.toggle("has-errors", state.errorCount > 0);
@@ -379,7 +391,7 @@ function endTest() {
     calculateFinalWpm(),
     calculateAccuracy(),
     state.correctCount,
-    state.errorCount
+    state.errorCount,
   );
 }
 
@@ -431,12 +443,12 @@ function showResults(wpm, accuracy, correctChars, errorChars) {
     "is-normal-result",
     "is-baseline-result",
     "is-high-score",
-    "is-high-score-result"
+    "is-high-score-result",
   );
   elements.resultsScreen.classList.add(`is-${variant}-result`);
   elements.resultsScreen.classList.toggle(
     "is-high-score",
-    variant === "high-score"
+    variant === "high-score",
   );
   document.body.classList.add("results-active");
   elements.typingScreen.classList.add("hidden");
@@ -498,7 +510,7 @@ async function resetTest({ loadNewPassage = true } = {}) {
     "is-normal-result",
     "is-baseline-result",
     "is-high-score",
-    "is-high-score-result"
+    "is-high-score-result",
   );
   elements.textContainer.classList.add("blurred");
   elements.startOverlay.classList.remove("hidden");
@@ -630,7 +642,9 @@ function updateCursor() {
   }
 
   const nextCursor =
-    state.isStarted && !state.isFinished && state.currentIndex < state.charSpans.length
+    state.isStarted &&
+    !state.isFinished &&
+    state.currentIndex < state.charSpans.length
       ? state.currentIndex
       : null;
 
@@ -719,14 +733,14 @@ function updateControls() {
   elements.difficultyOptions.forEach((option) => {
     option.setAttribute(
       "aria-checked",
-      String(option.dataset.difficulty === state.currentDifficulty)
+      String(option.dataset.difficulty === state.currentDifficulty),
     );
   });
 
   elements.modeOptions.forEach((option) => {
     option.setAttribute(
       "aria-checked",
-      String(option.dataset.mode === state.currentMode)
+      String(option.dataset.mode === state.currentMode),
     );
   });
 }
@@ -734,9 +748,14 @@ function updateControls() {
 function toggleDropdown(control) {
   const trigger = control.querySelector(".dropdown-trigger");
   const menu = control.querySelector(".dropdown-menu");
-  const isOpen = menu.classList.toggle("open");
+  const wantsOpen = !menu.classList.contains("open");
 
-  trigger.setAttribute("aria-expanded", String(isOpen));
+  closeDropdowns();
+
+  if (wantsOpen) {
+    menu.classList.add("open");
+    trigger.setAttribute("aria-expanded", "true");
+  }
 }
 
 function closeDropdown(control) {
@@ -768,7 +787,7 @@ function setLoadingState(message) {
 
 function showLoadingError() {
   elements.textContainer.replaceChildren(
-    "Unable to load passages. Refresh the page to try again."
+    "Unable to load passages. Refresh the page to try again.",
   );
   elements.textContainer.classList.add("error");
   elements.textContainer.classList.remove("loading", "blurred");
